@@ -1,0 +1,80 @@
+.menuBarItem {
+    max-height: 50px;
+    max-width: 100%;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    //background-color: #000000;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+
+    .menuItem {
+        display: flex;
+        height: 100%;
+        width: 250px;
+        .menuIcon {
+            height: 100%;
+            width: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: red;
+        }
+        .menuItemDetails {
+            height: 100%;
+            width: 200px;
+            justify-content: center;
+            align-items: center;
+            transition: ease-in 0.1s;
+            display: none;
+            span {
+                color: white;
+            }
+        }
+        .menuItemDetailsOpen {
+            display: block;
+        }
+    }
+
+    //.fa-layer {
+    //    position: relative;
+    //    display: inline-block;
+    //    width: 1em;
+    //    height: 1em;
+    //
+    //    i {
+    //        font-size: 1em;
+    //    }
+    //
+    //    // Ícone menor que será colocado por cima
+    //    &::after {
+    //        content: "";
+    //        position: absolute;
+    //        font-family: "Font Awesome 6 Free";
+    //        //font-weight: 900; // solid
+    //        bottom: -0.15em;
+    //        right: -0.15em;
+    //        background: #fff;
+    //        border-radius: 50%;
+    //        font-size: 0.45em;
+    //        padding: 0.15em;
+    //        line-height: 1;
+    //    }
+    //
+    //    // Modificador: ícone de adicionar (+)
+    //    &--add::after {
+    //        content: "\f067"; // unicode do ícone fa-plus
+    //    }
+    //
+    //    // Modificador: editar (lápis)
+    //    &--edit::after {
+    //        content: "\f304"; // fa-pen
+    //    }
+    //
+    //    // Modificador: deletar (lixeira)
+    //    &--delete::after {
+    //        content: "\f2ed"; // fa-trash
+    //    }
+    //}
+}

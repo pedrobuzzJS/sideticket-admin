@@ -1,0 +1,64 @@
+.contentLayout {
+    width: calc(100% - 50px);
+    margin-left: 50px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.4s;
+    //overflow-y: auto;
+}
+
+.mainContent {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.open {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    transition: all 0.4s;
+}
+
+//.tabs-container {
+//  max-width: 800px;
+//  margin: 0 auto;
+//  background: #fff;
+//  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+//  border-radius: 10px;
+//  overflow: hidden;
+//}
+//
+//.tabs {
+//  display: flex;
+//  border-bottom: 2px solid #ddd;
+//}
+//
+//.tab-item {
+//  flex: 1;
+//  text-align: center;
+//  padding: 12px 16px;
+//  font-size: 18px;
+//  font-weight: 600;
+//  color: #555;
+//  cursor: pointer;
+//  transition: all 0.3s ease-in-out;
+//
+//  &:hover {
+//    background: #f5f5f5;
+//    color: #0070f3;
+//  }
+//
+//  &.active {
+//    background: #0070f3;
+//    color: #fff;
+//    box-shadow: 0 -3px 0 #005bb5 inset;
+//  }
+//}
+//
+//.tab-content {
+//  padding: 20px;
+//  background: #f9f9f9;
+//  border-radius: 0 0 10px 10px;
+//}

@@ -1,0 +1,17 @@
+@for $i from 1 through 12 {
+    .col-#{$i} {
+        display: block;
+        flex-basis: calc(calc(($i/12) * 100%));
+        //padding-left: 3px;
+        //padding-right: 3px;
+        // background-color: aquamarine;
+
+        @media (max-width: 700px) {
+            flex-basis: 50%;
+        }
+
+        @media (max-width: 400px) {
+            flex-basis: 100%;
+        }
+    }
+}

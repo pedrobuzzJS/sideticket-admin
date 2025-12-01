@@ -1,0 +1,22 @@
+.ralDropdown {
+    border: 1px solid black;
+    top: 20px;
+    padding: 0;
+
+    .ralDropdownItem {
+        padding: 0;
+    }
+}
+
+.szh-menu {
+    border: 1px solid black;
+    padding: 0;
+    border-radius: 2px;
+}
+
+.szh-menu__submenu {
+    padding: 0;
+    .szh-menu__item {
+        padding: 0;
+    }
+}

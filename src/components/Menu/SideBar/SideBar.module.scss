@@ -1,0 +1,38 @@
+.sideBar {
+    width: 50px;
+    background-color: #2b303b;
+    height: 100%;
+    position: fixed;
+    transition: all 0.4s;
+    z-index: 100;
+}
+
+.open {
+    width: 250px;
+    transition: all 0.4s;
+    z-index: 100;
+}
+
+.sideBarHeader {
+    background-color: white;
+    height: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.4s;
+    position: absolute;
+}
+
+.list {
+    width: 50px;
+    height: 100%;
+    transition: all 0.4s;
+}
+
+.listOpen {
+    width: 250px;
+    transition: all 0.4s;
+}

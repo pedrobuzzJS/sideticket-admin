@@ -1,0 +1,24 @@
+.tag {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #06b6d4;
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    padding: 0.25rem 0.4rem;
+    border-radius: 6px;
+}
+
+.success {
+    background-color: #22c55e;
+}
+.info {
+    background-color: #0ea5e9;
+}
+.warning {
+    background-color: #f97316;
+}
+.danger {
+    background-color: #ef4444;
+}

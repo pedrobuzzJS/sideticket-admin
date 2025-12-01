@@ -1,0 +1,65 @@
+.rslTableWrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .rslTableHeader {
+        flex: 0 0 auto;
+        background: #fff;
+        padding: 3px;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .rslTableBody {
+        flex: 1 1 auto;
+        overflow-y: auto;
+    }
+
+    .rslTableFooter {
+        flex: 0 0 auto;
+        background: #fff;
+        padding: 8px;
+        border-top: 1px solid #ddd;
+
+        .navigationButtons {
+            cursor: pointer;
+            &:hover {
+                background-color: #dedede;
+            }
+        }
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: fixed;
+
+        thead th {
+            position: sticky;
+            top: 0;
+            color: #ffffff;
+            background: #062c41;
+            height: 25px;
+            text-align: center;
+        }
+
+        td,
+        th {
+            text-align: center;
+            font-size: 14px;
+        }
+
+        tr {
+            height: 20px;
+        }
+
+        td {
+            border-right: 1px solid #f8f8f8;
+            font-size: 14px;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f8f8;
+        }
+    }
+}

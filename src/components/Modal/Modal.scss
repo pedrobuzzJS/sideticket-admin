@@ -1,0 +1,81 @@
+.modalOverlay {
+    background: rgb(0, 0, 0, 0.5);
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .modal {
+        background-color: #fff;
+        border: 2px solid #2a3d41;
+        border-radius: 0.5rem;
+        position: relative;
+        box-shadow: 3px 3px 0 #00000033;
+
+        .modalBody {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .modalContent {
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                .modalPP {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+
+            .modalHeader {
+                padding: 5px;
+                display: grid;
+                grid-template-columns: 1fr auto;
+                align-items: center;
+                background: #2a3d41;
+
+                .modalHeaderDrag {
+                    display: flex;
+                    font-weight: bold;
+                    color: #eee;
+                }
+
+                //.modal-title {
+                //    position: absolute;
+                //    left: 50%;
+                //    transform: translateX(-50%);
+                //    font-weight: bold;
+                //    color: #eee;
+                //}
+
+                .modalActions {
+                    display: flex;
+                    gap: 6px;
+                }
+            }
+
+            .modalFooter {
+                display: flex;
+                justify-content: flex-end;
+                align-items: center;
+                border-top: 2px solid #2a3d41;
+                background-color: #265e6a;
+                position: relative;
+                z-index: 10;
+                gap: 10px;
+                padding-right: 10px;
+            }
+        }
+    }
+}
