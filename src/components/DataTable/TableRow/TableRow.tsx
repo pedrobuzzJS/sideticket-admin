@@ -1,33 +1,33 @@
-import { type JSX, memo } from "react";
+import { memo, type JSX, useCallback } from "react";
 import { DateTime } from "luxon";
 import "./TableRow.scss";
 import _ from "lodash";
-import { Tag } from "../../Tag/Tag.tsx";
+import { Tag } from "../../Tag/Tag";
 
-interface DataRowProps<T = unknown> {
-    item: T;
-    columns: ColumnProps[];
-    rowIndex: number;
-    isSelected?: boolean;
-    onToggle: ({ rowIndex, rowValue }: SelectedRows) => void;
-    onDoubleClick: (item: SelectedRows) => void;
-}
-
-export interface SelectedRows<T = unknown> {
+export interface SelectedRows<T = undefined> {
     rowIndex: number;
     rowValue: T;
 }
 
-export interface ColumnProps<T = undefined> {
-    field?: string;
+export interface ColumnProps<T> {
+    field?: keyof T;
     title: string;
     hidden?: boolean;
     isKey?: boolean;
     type?: "dateTime" | "checkbox" | "tag";
-    render?: (item: T, index: string) => JSX.Element;
+    render?: (item: T, key: string) => JSX.Element;
 }
 
-function TableRowCompnent<T>({
+interface DataRowProps<T> {
+    item: T;
+    columns: ColumnProps<T>[];
+    rowIndex: number;
+    isSelected?: boolean;
+    onToggle: (data: SelectedRows<T>) => void;
+    onDoubleClick: (data: SelectedRows<T>) => void;
+}
+
+function TableRowComponent<T>({
     item,
     columns,
     rowIndex,
@@ -35,84 +35,79 @@ function TableRowCompnent<T>({
     isSelected = false,
     onDoubleClick,
 }: DataRowProps<T>) {
+    const displayValue = useCallback((value: unknown) => {
+        return value === null || value === undefined ? "-" : String(value);
+    }, []);
+
     return (
         <tr
-            key={rowIndex}
             className={`tableRow ${isSelected ? "rowSelected" : ""}`}
-            onClick={() => onToggle({ rowIndex: rowIndex, rowValue: item })}
             style={{ cursor: "pointer" }}
-            onDoubleClick={() => onDoubleClick(item as SelectedRows)}
+            onClick={() => onToggle({ rowIndex, rowValue: item })}
+            onDoubleClick={() => onDoubleClick({ rowIndex, rowValue: item })}
         >
             <td>
                 <input
                     type="checkbox"
-                    onChange={() => onToggle({ rowIndex, rowValue: item })}
                     checked={isSelected}
+                    onChange={() => onToggle({ rowIndex, rowValue: item })}
                     style={{ cursor: "pointer" }}
                 />
             </td>
-            {columns?.map((column, index) => {
+
+            {columns.map((column, index) => {
                 if (column.hidden) return null;
+
+                const key = `${String(column.field)}_${rowIndex}_${index}`;
+
                 if (column.render) {
-                    return (
-                        <td key={index}>
-                            {column.render(item, `${column.field}_${rowIndex}`)}
-                        </td>
-                    );
+                    return <td key={key}>{column.render(item, key)}</td>;
                 }
-                if (column.type === "dateTime") {
+
+                if (!column.field) {
+                    return <td key={key}>-</td>;
+                }
+
+                const value = item[column.field];
+
+                if (column.type === "dateTime" && typeof value === "string") {
                     return (
-                        <td key={`${column.field}_${rowIndex}`}>
-                            {DateTime.fromISO(
-                                (item as Record<string, string>)[
-                                    column.field as string
-                                ],
-                            )
+                        <td key={key}>
+                            {DateTime.fromISO(value)
                                 .setZone("America/Sao_Paulo")
                                 .toFormat("dd/MM/yyyy HH:mm")}
                         </td>
                     );
                 }
+
                 if (column.type === "tag") {
                     return (
-                        <td key={`${column.field}_${rowIndex}`}>
-                            <Tag>
-                                {(item as Record<string, undefined>)[
-                                    column.field as string
-                                ] ?? "-"}
-                            </Tag>
+                        <td key={key}>
+                            <Tag>{String(value ?? "-")}</Tag>
                         </td>
                     );
                 }
+
                 if (column.type === "checkbox") {
                     return (
-                        <td key={`${column.field}_${rowIndex}`}>
+                        <td key={key}>
                             <input
                                 type="checkbox"
-                                defaultChecked={
-                                    (item as Record<string, undefined>)[
-                                        column.field as string
-                                    ]
-                                }
+                                defaultChecked={Boolean(value)}
                                 disabled
                             />
                         </td>
                     );
                 }
-                return (
-                    <td key={`${column.field}_${rowIndex}`}>
-                        {(item as Record<string, undefined>)[
-                            column.field as string
-                        ] ?? "-"}
-                    </td>
-                );
+
+                return <td key={key}>{displayValue(value)}</td>;
             })}
         </tr>
     );
 }
 
-export const TableRow = memo(TableRowCompnent, (prev, next) => {
-    return (
-        prev.isSelected === next.isSelected && _.isEqual(prev.item, next.item)
-    );
-});
+export const TableRow = memo(
+    TableRowComponent,
+    (prev, next) =>
+        prev.isSelected === next.isSelected && _.isEqual(prev.item, next.item),
+) as typeof TableRowComponent;

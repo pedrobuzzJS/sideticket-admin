@@ -34,7 +34,7 @@ export default function Modal({
     // footer,
     draggable = false,
 }: IModalProps) {
-    const [modalId, setModalId] = useState<string | undefined>(null);
+    const [modalId, setModalId] = useState<string | undefined>("");
     const [isDragging, setIsDragging] = useState<boolean>(false);
     const [position, setPosition] = useState<{ x: number; y: number }>({
         x: 0,
@@ -48,7 +48,7 @@ export default function Modal({
     const startPosition = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
     const modalRef = useRef<HTMLDivElement | null>(null);
     const windowSize = useWindowSize();
-    const [zIndex, setZIndex] = useState<number>(100);
+    const [zIndex] = useState<number>(100);
 
     useEffect(() => {
         setPosition({ x: 0, y: 0 });

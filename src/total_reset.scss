@@ -152,7 +152,7 @@ main {
     width: 100%;
     margin: 0;
     padding: 0;
-    overflow: hidden; /* Evita scroll na página toda */
+    overflow: unset; /* Evita scroll na página toda */
 }
 
 ::-webkit-scrollbar-track {

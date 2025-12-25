@@ -1,7 +1,6 @@
 import { create } from "zustand";
-// import {Router} from "@tanstack/react-router";
-// import type { UseNavigateResult } from "@tanstack/react-router";
 import { type AppRouter } from "../main.tsx";
+import { delayAndRun } from "../helpers/helpers.ts";
 
 interface MenuProps {
     superOpenSideBar: boolean;
@@ -33,10 +32,12 @@ export const useMenuStore = create<MenuProps>()((set, get) => {
             set({ superOpenSideBar: !get().superOpenSideBar });
         },
         handleSideBar: (open: boolean) => {
-            if (get().superOpenSideBar) {
-                return;
-            }
-            set({ isSideBarOpen: open });
+            delayAndRun(() => {
+                if (get().superOpenSideBar) {
+                    return;
+                }
+                set({ isSideBarOpen: open });
+            }, 100);
         },
     };
 });

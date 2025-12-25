@@ -12,14 +12,5 @@ export const Route = createFileRoute("/")({
 });
 
 function RouteComponent() {
-    return (
-        <span
-            style={{
-                color: "black",
-                // float: 'right',
-            }}
-        >
-            Teste de posicionamento
-        </span>
-    );
+    return;
 }

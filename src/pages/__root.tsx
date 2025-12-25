@@ -3,6 +3,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ContentLayout } from "../components/ContentLayout/ContentLayout.tsx";
 import { StarterObserver } from "../components/StarterObserver/StarterObserver.tsx";
 import { SideBar } from "../components/Menu/SideBar/SideBar.tsx";
+import "./../components/Dropdown/Dropdown.scss";
 
 export const Route = createRootRoute({
     component: RootComponent,

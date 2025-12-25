@@ -3,7 +3,7 @@ export function MenuBar() {
         <div
             style={{
                 height: "50px",
-                backgroundColor: "#2a3d41",
+                backgroundColor: "#2b303b",
                 width: "100%",
             }}
         >

@@ -14,16 +14,21 @@
 }
 
 .sideBarHeader {
-    background-color: white;
+    background-color: #464f61;
     height: 50px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    cursor: pointer;
     z-index: 10;
     transition: all 0.4s;
     position: absolute;
+}
+
+.sideBarFooter {
+    @extend .sideBarHeader;
+    cursor: pointer;
+    bottom: 0;
 }
 
 .list {
@@ -35,4 +40,15 @@
 .listOpen {
     width: 250px;
     transition: all 0.4s;
+}
+
+.testeCoisa {
+    height: calc(100% - 110px);
+    overflow: auto; /* mantém o scroll */
+
+    /* Firefox */
+    scrollbar-width: none;
+
+    /* Chrome, Edge e Safari */
+    -ms-overflow-style: none; /* IE e Edge antigo */
 }

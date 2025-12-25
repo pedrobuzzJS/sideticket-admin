@@ -4,37 +4,75 @@
     height: 50px;
     width: 100%;
     display: flex;
-    //background-color: #000000;
     align-items: center;
     justify-content: center;
     overflow-x: hidden;
+    cursor: pointer;
 
     .menuItem {
         display: flex;
+        justify-content: center;
+        align-items: center;
         height: 100%;
         width: 250px;
-        .menuIcon {
+
+        .menuIconContainer {
             height: 100%;
-          
             width: 50px;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: red;
-        }
-        .menuItemDetails {
-            height: 100%;
-            width: 200px;
-            justify-content: center;
-            align-items: center;
-            transition: ease-in 0.1s;
-            display: none;
-            span {
-                color: white;
+
+            .menuIcon {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #464f61;
+                width: 80%;
+                height: 80%;
+                border-radius: 7% 0 0 7%;
+                cursor: pointer;
+                transition: all 200ms;
+
+                i {
+                    font-size: 20px;
+                    color: #ffffff;
+                }
             }
         }
-        .menuItemDetailsOpen {
-            display: block;
+        .menuItemDetails {
+            height: 80%;
+            width: 200px;
+            display: flex;
+            background-color: #464f61;
+
+            .menuDetails {
+                max-width: 190px;
+                width: 190px !important;
+                height: 100%;
+                justify-content: space-between;
+                align-items: center;
+                transition: ease-in 0.1s;
+                display: flex;
+                span {
+                    text-wrap: nowrap;
+                    text-overflow: ellipsis;
+                    color: white;
+                }
+            }
+        }
+    }
+
+    &:hover {
+        .menuItem {
+            .menuIconContainer {
+                .menuIcon {
+                    i {
+                        font-size: 23px;
+                        transition: all 200ms;
+                    }
+                }
+            }
         }
     }
 
