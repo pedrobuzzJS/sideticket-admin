@@ -9,7 +9,7 @@ import type {
 import { collect } from "collect.js";
 import { DataTable } from "../../components/DataTable/index.tsx";
 import Btn from "../../components/Button/Btn.tsx";
-import { CompanyForm } from "../../forms/CompanyForm.tsx";
+import {CompanyForm} from "../../forms/CompanyForm.tsx";
 
 export const Route = createFileRoute("/list/company")({
     component: RouteComponent,
@@ -71,9 +71,6 @@ function RouteComponent() {
     }
 
     async function deleteRegister() {
-        console.log(
-            collect(selectedRows).pluck("rowValue").pluck("id").toArray()[0],
-        );
         await api.delete(
             `/company/${collect(selectedRows).pluck("rowValue").pluck("id").toArray()}`,
         );

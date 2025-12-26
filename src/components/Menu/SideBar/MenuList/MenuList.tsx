@@ -19,7 +19,6 @@ export function MenuList() {
                         label={menu.name}
                         icon={menu.icon}
                         path={menu.route}
-                        hasChildren={menu.hasChildren}
                         deepChildren={menu.deepChildren}
                     />
                 );

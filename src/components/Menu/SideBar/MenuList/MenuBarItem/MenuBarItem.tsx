@@ -4,7 +4,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { router } from "../../../../../main.tsx";
 
 export interface MenuBarItemProps {
-    icon?: string;
+    icon: string;
     label?: string;
     path?: keyof typeof router.routesByPath;
     deepChildren?: MenuBarItemProps[];
@@ -38,6 +38,7 @@ export function MenuBarItem({
                 <div className="menuIconContainer">
                     <div className="menuIcon">
                         <i className={icon ?? "fa-regular fa-user"} />
+                        {/*<DynamicTablerIcon name={icon} />*/}
                     </div>
                 </div>
 
