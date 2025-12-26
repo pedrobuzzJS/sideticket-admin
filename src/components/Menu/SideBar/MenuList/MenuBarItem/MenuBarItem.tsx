@@ -1,45 +1,72 @@
 import "./MenuBarItem.scss";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { router } from "../../../../../main.tsx";
 
-interface MenuBarItemProps {
+export interface MenuBarItemProps {
     icon?: string;
     label?: string;
     path?: keyof typeof router.routesByPath;
-    hasChildren: boolean;
     deepChildren?: MenuBarItemProps[];
+    hasChildren?: boolean;
 }
 
-export function MenuBarItem({ icon, label, path = "/", hasChildren, deepChildren }: MenuBarItemProps) {
+export function MenuBarItem({
+    icon,
+    label,
+    path,
+    deepChildren = [],
+}: MenuBarItemProps) {
     const navigate = useNavigate();
+    const [open, setOpen] = useState(false);
 
-    const goTo = useCallback(async () => {
-        await navigate({ to: `${path}` });
-    }, [navigate, path]);
+    const hasChildren = deepChildren.length > 0;
+
+    const handleClick = useCallback(async () => {
+        if (hasChildren) {
+            setOpen((prev) => !prev);
+            return;
+        }
+        if (path) {
+            await navigate({ to: path });
+        }
+    }, [hasChildren, navigate, path]);
 
     return (
-        <li className="menuBarItem" onClick={goTo}>
-            <div className="menuItem">
+        <li className={`menuBarItem ${open ? "open" : ""}`}>
+            <div className="menuItem" onClick={handleClick}>
                 <div className="menuIconContainer">
                     <div className="menuIcon">
-                        <i className={`${icon ?? "fa-regular fa-user"}`} />
+                        <i className={icon ?? "fa-regular fa-user"} />
                     </div>
                 </div>
+
                 <div className="menuItemDetails">
                     <div className="menuDetails">
-                        <span className={`menuText`}>{`${label ?? ""}`}</span>
+                        <span className="menuText">{label}</span>
                     </div>
-                    <div
-                        className={`menuExpander ${!hasChildren && "menuExpanderHide"}`}
-                    >
-                        <i
-                            style={{ color: "white" }}
-                            className="fa-solid fa-chevron-down"
-                        ></i>
-                    </div>
+
+                    {hasChildren && (
+                        <div className="menuExpander">
+                            <i className="fa-solid fa-chevron-down" />
+                        </div>
+                    )}
                 </div>
             </div>
+
+            {hasChildren && open && (
+                <ul className="submenu">
+                    {deepChildren.map((child, index) => (
+                        <MenuBarItem
+                            key={index}
+                            label={child.name}
+                            path={child.route}
+                            icon={child.icon}
+                            deepChildren={child.deepChildren}
+                        />
+                    ))}
+                </ul>
+            )}
         </li>
     );
 }

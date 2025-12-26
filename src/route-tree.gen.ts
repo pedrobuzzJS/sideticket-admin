@@ -10,10 +10,6 @@
 
 import { Route as rootRouteImport } from './pages/__root'
 import { Route as IndexRouteImport } from './pages/index'
-import { Route as ListUsersRouteImport } from './pages/list/users'
-import { Route as ListTicketsRouteImport } from './pages/list/tickets'
-import { Route as ListPersonsRouteImport } from './pages/list/persons'
-import { Route as ListEventsRouteImport } from './pages/list/events'
 import { Route as ListCompanyRouteImport } from './pages/list/company'
 import { Route as AuthSignInRouteImport } from './pages/_auth/sign-in'
 import { Route as AuthLoginRouteImport } from './pages/_auth/login'
@@ -21,26 +17,6 @@ import { Route as AuthLoginRouteImport } from './pages/_auth/login'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ListUsersRoute = ListUsersRouteImport.update({
-  id: '/list/users',
-  path: '/list/users',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ListTicketsRoute = ListTicketsRouteImport.update({
-  id: '/list/tickets',
-  path: '/list/tickets',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ListPersonsRoute = ListPersonsRouteImport.update({
-  id: '/list/persons',
-  path: '/list/persons',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ListEventsRoute = ListEventsRouteImport.update({
-  id: '/list/events',
-  path: '/list/events',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ListCompanyRoute = ListCompanyRouteImport.update({
@@ -64,20 +40,12 @@ export interface FileRoutesByFullPath {
   '/login': typeof AuthLoginRoute
   '/sign-in': typeof AuthSignInRoute
   '/list/company': typeof ListCompanyRoute
-  '/list/events': typeof ListEventsRoute
-  '/list/persons': typeof ListPersonsRoute
-  '/list/tickets': typeof ListTicketsRoute
-  '/list/users': typeof ListUsersRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/login': typeof AuthLoginRoute
   '/sign-in': typeof AuthSignInRoute
   '/list/company': typeof ListCompanyRoute
-  '/list/events': typeof ListEventsRoute
-  '/list/persons': typeof ListPersonsRoute
-  '/list/tickets': typeof ListTicketsRoute
-  '/list/users': typeof ListUsersRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -85,42 +53,13 @@ export interface FileRoutesById {
   '/_auth/login': typeof AuthLoginRoute
   '/_auth/sign-in': typeof AuthSignInRoute
   '/list/company': typeof ListCompanyRoute
-  '/list/events': typeof ListEventsRoute
-  '/list/persons': typeof ListPersonsRoute
-  '/list/tickets': typeof ListTicketsRoute
-  '/list/users': typeof ListUsersRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/login'
-    | '/sign-in'
-    | '/list/company'
-    | '/list/events'
-    | '/list/persons'
-    | '/list/tickets'
-    | '/list/users'
+  fullPaths: '/' | '/login' | '/sign-in' | '/list/company'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/login'
-    | '/sign-in'
-    | '/list/company'
-    | '/list/events'
-    | '/list/persons'
-    | '/list/tickets'
-    | '/list/users'
-  id:
-    | '__root__'
-    | '/'
-    | '/_auth/login'
-    | '/_auth/sign-in'
-    | '/list/company'
-    | '/list/events'
-    | '/list/persons'
-    | '/list/tickets'
-    | '/list/users'
+  to: '/' | '/login' | '/sign-in' | '/list/company'
+  id: '__root__' | '/' | '/_auth/login' | '/_auth/sign-in' | '/list/company'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -128,10 +67,6 @@ export interface RootRouteChildren {
   AuthLoginRoute: typeof AuthLoginRoute
   AuthSignInRoute: typeof AuthSignInRoute
   ListCompanyRoute: typeof ListCompanyRoute
-  ListEventsRoute: typeof ListEventsRoute
-  ListPersonsRoute: typeof ListPersonsRoute
-  ListTicketsRoute: typeof ListTicketsRoute
-  ListUsersRoute: typeof ListUsersRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -141,34 +76,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/list/users': {
-      id: '/list/users'
-      path: '/list/users'
-      fullPath: '/list/users'
-      preLoaderRoute: typeof ListUsersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/list/tickets': {
-      id: '/list/tickets'
-      path: '/list/tickets'
-      fullPath: '/list/tickets'
-      preLoaderRoute: typeof ListTicketsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/list/persons': {
-      id: '/list/persons'
-      path: '/list/persons'
-      fullPath: '/list/persons'
-      preLoaderRoute: typeof ListPersonsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/list/events': {
-      id: '/list/events'
-      path: '/list/events'
-      fullPath: '/list/events'
-      preLoaderRoute: typeof ListEventsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/list/company': {
@@ -200,10 +107,6 @@ const rootRouteChildren: RootRouteChildren = {
   AuthLoginRoute: AuthLoginRoute,
   AuthSignInRoute: AuthSignInRoute,
   ListCompanyRoute: ListCompanyRoute,
-  ListEventsRoute: ListEventsRoute,
-  ListPersonsRoute: ListPersonsRoute,
-  ListTicketsRoute: ListTicketsRoute,
-  ListUsersRoute: ListUsersRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

@@ -25,7 +25,6 @@ interface CompanyProps {
     createdAt?: string;
     updatedAt?: string;
     deletedAt?: string;
-    approved: boolean;
     metadata?: string;
 }
 
@@ -43,12 +42,6 @@ function RouteComponent() {
         { title: "ID", field: "id", hidden: false, isKey: true },
         { title: "Nome", field: "name", hidden: false },
         { title: "Status", field: "status", hidden: false },
-        {
-            title: "Aprovado",
-            field: "approved",
-            hidden: false,
-            type: "checkbox",
-        },
         { title: "Metadata", field: "metadata", hidden: true },
         {
             title: "createdAt",

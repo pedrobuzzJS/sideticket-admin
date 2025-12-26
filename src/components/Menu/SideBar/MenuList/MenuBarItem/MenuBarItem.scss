@@ -1,19 +1,20 @@
 .menuBarItem {
-    max-height: 50px;
     max-width: 100%;
-    height: 50px;
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    overflow-x: hidden;
     cursor: pointer;
+
+    height: auto;
+    max-height: none;
+    overflow: visible;
 
     .menuItem {
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 100%;
+        height: 50px;
         width: 250px;
 
         .menuIconContainer {
@@ -40,6 +41,7 @@
                 }
             }
         }
+
         .menuItemDetails {
             height: 80%;
             width: 200px;
@@ -66,10 +68,11 @@
                 width: 15%;
                 align-items: center;
                 justify-content: center;
-            }
-            
-            .menuExpanderHide {
-                display: none;
+
+                i {
+                    color: white;
+                    transition: transform 0.2s ease;
+                }
             }
         }
     }
@@ -87,44 +90,38 @@
         }
     }
 
-    //.fa-layer {
-    //    position: relative;
-    //    display: inline-block;
-    //    width: 1em;
-    //    height: 1em;
-    //
-    //    i {
-    //        font-size: 1em;
-    //    }
-    //
-    //    // Ícone menor que será colocado por cima
-    //    &::after {
-    //        content: "";
-    //        position: absolute;
-    //        font-family: "Font Awesome 6 Free";
-    //        //font-weight: 900; // solid
-    //        bottom: -0.15em;
-    //        right: -0.15em;
-    //        background: #fff;
-    //        border-radius: 50%;
-    //        font-size: 0.45em;
-    //        padding: 0.15em;
-    //        line-height: 1;
-    //    }
-    //
-    //    // Modificador: ícone de adicionar (+)
-    //    &--add::after {
-    //        content: "\f067"; // unicode do ícone fa-plus
-    //    }
-    //
-    //    // Modificador: editar (lápis)
-    //    &--edit::after {
-    //        content: "\f304"; // fa-pen
-    //    }
-    //
-    //    // Modificador: deletar (lixeira)
-    //    &--delete::after {
-    //        content: "\f2ed"; // fa-trash
-    //    }
-    //}
+    &.open {
+        margin-left: 0;
+        .menuExpander i {
+            transform: rotate(180deg);
+        }
+    }
+
+    //SUBMENU
+
+    .submenu {
+        width: 100%;
+        padding-left: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    /* Submenu mais compacto */
+    .submenu .menuItem {
+        //height: 42px;
+
+        .menuIcon {
+            //width: 70%;
+            //height: 70%;
+        }
+
+        .menuItemDetails {
+            //height: 75%;
+        }
+
+        .menuText {
+            //font-size: 0.9rem;
+        }
+    }
 }
