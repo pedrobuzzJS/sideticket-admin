@@ -45,7 +45,7 @@ export interface DataTableProps<T> extends PropsWithChildren {
     lastPage?: number;
     perPage?: string;
     totalItemsFromDb?: number;
-    onRowDoubleClick: (item: SelectedRows<T>) => void;
+    onRowDoubleClick?: (item: SelectedRows<T>) => void;
     firstPageUrl?: string;
     lastPageUrl?: string;
     nextPageUrl?: string;
@@ -77,9 +77,6 @@ export function Table<T>({
         if (perPage) setItemsPerPage(perPage);
         if (data) setIsLoading(false);
     }, [data]);
-    useEffect(() => {
-        fetchPage();
-    }, []);
     const headerCheckboxRef = useRef<HTMLInputElement>(null);
     const { contextProps, menuProps } = useControlledMenu({
         transition: true,
@@ -169,7 +166,34 @@ export function Table<T>({
                             </th>
                             {columns?.map((column, index) =>
                                 column.hidden ? null : (
-                                    <th key={index}>{column.title}</th>
+                                    <th
+                                        key={index}
+                                        style={{
+                                            width: `${column.width ? `${column.width}px` : "100%"}`,
+                                            maxWidth: "100%",
+                                        }}
+                                    >
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                width: "100%",
+                                                height: "100%",
+                                            }}
+                                        >
+                                            <span
+                                                title={column.title}
+                                                style={{
+                                                    whiteSpace: "nowrap",
+                                                    textOverflow: "ellipsis",
+                                                    overflowX: "hidden",
+                                                }}
+                                            >
+                                                {column.title}
+                                            </span>
+                                        </div>
+                                    </th>
                                 ),
                             )}
                         </tr>

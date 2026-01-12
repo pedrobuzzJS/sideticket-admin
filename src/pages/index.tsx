@@ -12,7 +12,5 @@ export const Route = createFileRoute("/")({
 });
 
 function RouteComponent() {
-    return (
-        <span>Home</span>
-    );
+    return <span>Home</span>;
 }

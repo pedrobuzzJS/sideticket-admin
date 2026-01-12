@@ -17,8 +17,9 @@ export function MenuList() {
                 return (
                     <MenuBarItem
                         label={menu.name}
-                        icon={menu.icon}
                         path={menu.route}
+                        icon={menu.icon}
+                        iconColor={menu.iconColor}
                         deepChildren={menu.deepChildren}
                     />
                 );

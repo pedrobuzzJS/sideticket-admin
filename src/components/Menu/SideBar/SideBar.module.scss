@@ -29,6 +29,7 @@
     @extend .sideBarHeader;
     cursor: pointer;
     bottom: 0;
+    color: #ffffff;
 }
 
 .list {
@@ -44,11 +45,7 @@
 
 .testeCoisa {
     height: calc(100% - 110px);
-    overflow: auto; /* mantém o scroll */
-
-    /* Firefox */
+    overflow: auto;
     scrollbar-width: none;
-
-    /* Chrome, Edge e Safari */
-    -ms-overflow-style: none; /* IE e Edge antigo */
+    -ms-overflow-style: none;
 }

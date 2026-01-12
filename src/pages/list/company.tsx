@@ -9,7 +9,7 @@ import type {
 import { collect } from "collect.js";
 import { DataTable } from "../../components/DataTable/index.tsx";
 import Btn from "../../components/Button/Btn.tsx";
-import {CompanyForm} from "../../forms/CompanyForm.tsx";
+import { CompanyForm } from "../../forms/CompanyForm.tsx";
 
 export const Route = createFileRoute("/list/company")({
     component: RouteComponent,

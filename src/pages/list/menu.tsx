@@ -11,30 +11,35 @@ import { DataTable } from "../../components/DataTable";
 import Btn from "../../components/Button/Btn.tsx";
 import { MenuForm } from "../../forms/MenuForm.tsx";
 
-export const Route = createFileRoute("/list/module")({
+export const Route = createFileRoute("/list/menu")({
     component: RouteComponent,
 });
 
-interface ModuleProps {
-    id: string;
+interface Menu {
+    id: number | string;
     name: string;
-    description: string;
-    createdAt?: string;
-    updatedAt?: string;
-    deletedAt?: string;
-    metadata?: string;
+    route: string;
+    parentId: string;
+    order: string;
+    icon: string;
+    disabled: string;
+    createdAt: string;
+    updatedAt: string;
+    deletedAt: string;
+    metadata: string;
 }
+
 function RouteComponent() {
-    const moduleQuery = useQuery({
-        queryKey: ["module"],
+    const menuQuery = useQuery({
+        queryKey: ["menu"],
         queryFn: async () => {
-            const { data } = await api.get("module");
+            const { data } = await api.get("menu");
             return data;
         },
     });
 
-    const [selectedRows, setSelectedRows] = useState<SelectedRows[]>([]);
-    const [columns] = useState<ColumnProps<ModuleProps>[]>([
+    const [selectedRows, setSelectedRows] = useState<SelectedRows<Menu>[]>([]);
+    const [columns] = useState<ColumnProps<Menu>[]>([
         {
             title: "ID",
             field: "id",
@@ -44,16 +49,18 @@ function RouteComponent() {
             width: 30,
         },
         { title: "Nome", field: "name", hidden: false, width: 200 },
+        { title: "Rota", field: "route", float: "center", width: 200 },
+        { title: "Pai", field: "parentId", width: 30, float: "center" },
+        { title: "Ordem", field: "order", float: "center", width: 100 },
+        { title: "Ícone", field: "icon", width: 400 },
         {
-            title: "Descrição",
-            field: "description",
-            type: "tag",
-            float: "center",
-            width: 200,
-            hidden: true,
+            title: "Desabilitado",
+            field: "disabled",
+            type: "checkbox",
+            width: 50,
         },
         {
-            title: "Data de criação",
+            title: "createdAt",
             field: "createdAt",
             hidden: false,
             type: "dateTime",
@@ -64,28 +71,23 @@ function RouteComponent() {
         { title: "deletedAt", field: "deletedAt", hidden: true },
     ]);
     const [isModalOpen, setIsModalOpen] = useState(false);
-    const [id, setId] = useState<number>();
+    const [id, setId] = useState<number | number | undefined>();
     function openModal() {
         setIsModalOpen(true);
     }
 
     async function closeModal() {
-        setId(null);
+        setId("");
         setIsModalOpen(false);
-        await moduleQuery.refetch();
+        await menuQuery.refetch();
         setSelectedRows([]);
-    }
-
-    function editRegister(item: SelectedRows) {
-        setId(item?.id);
-        openModal();
     }
 
     async function deleteRegister() {
         await api.delete(
-            `/module/${collect(selectedRows).pluck("rowValue").pluck("id").toArray()}`,
+            `/menu/${collect(selectedRows).pluck("rowValue").pluck("id").toArray()}`,
         );
-        await moduleQuery.refetch();
+        await menuQuery.refetch();
     }
 
     return (
@@ -124,21 +126,20 @@ function RouteComponent() {
                     </Btn>
                 </DataTable.Header>
                 <DataTable.Table<Menu>
-                    data={moduleQuery.data?.data}
+                    data={menuQuery.data?.data}
                     columns={columns}
-                    loading={moduleQuery.isLoading}
+                    loading={menuQuery.isLoading}
                     selectedRows={selectedRows}
                     setSelectedRows={setSelectedRows}
-                    currentPage={moduleQuery.data?.currentPage}
-                    lastPage={moduleQuery.data?.lastPage}
-                    totalItemsFromDb={moduleQuery.data?.total}
-                    onRowDoubleClick={editRegister}
-                    firstPageUrl={moduleQuery.data?.firstPageUrl}
-                    lastPageUrl={moduleQuery.data?.lastPageUrl}
-                    nextPageUrl={moduleQuery.data?.nextPageUrl}
-                    previousPageUrl={moduleQuery.data?.previousPageUrl}
-                    queryKey={["module"]}
-                    perPage={moduleQuery.data?.perPage}
+                    currentPage={menuQuery.data?.currentPage}
+                    lastPage={menuQuery.data?.lastPage}
+                    totalItemsFromDb={menuQuery.data?.total}
+                    firstPageUrl={menuQuery.data?.firstPageUrl}
+                    lastPageUrl={menuQuery.data?.lastPageUrl}
+                    nextPageUrl={menuQuery.data?.nextPageUrl}
+                    previousPageUrl={menuQuery.data?.previousPageUrl}
+                    queryKey={["menu"]}
+                    perPage={menuQuery.data?.perPage}
                 />
             </DataTable.Root>
         </>

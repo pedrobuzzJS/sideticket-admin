@@ -16,6 +16,8 @@ export interface ColumnProps<T> {
     isKey?: boolean;
     type?: "dateTime" | "checkbox" | "tag";
     render?: (item: T, key: string) => JSX.Element;
+    float?: "left" | "center" | "right";
+    width?: number;
 }
 
 interface DataRowProps<T> {
@@ -61,11 +63,35 @@ function TableRowComponent<T>({
                 const key = `${String(column.field)}_${rowIndex}_${index}`;
 
                 if (column.render) {
-                    return <td key={key}>{column.render(item, key)}</td>;
+                    return (
+                        <div
+                            style={{
+                                display: "flex",
+                                width: "100%",
+                                height: "100%",
+                                justifyContent: column.float ?? "left",
+                                alignItems: "center",
+                            }}
+                        >
+                            <td key={key}>{column.render(item, key)}</td>
+                        </div>
+                    );
                 }
 
                 if (!column.field) {
-                    return <td key={key}>-</td>;
+                    return (
+                        <div
+                            style={{
+                                display: "flex",
+                                width: "100%",
+                                height: "100%",
+                                justifyContent: column.float ?? "left",
+                                alignItems: "center",
+                            }}
+                        >
+                            <td key={key}>-</td>
+                        </div>
+                    );
                 }
 
                 const value = item[column.field];
@@ -73,9 +99,19 @@ function TableRowComponent<T>({
                 if (column.type === "dateTime" && typeof value === "string") {
                     return (
                         <td key={key}>
-                            {DateTime.fromISO(value)
-                                .setZone("America/Sao_Paulo")
-                                .toFormat("dd/MM/yyyy HH:mm")}
+                            <div
+                                style={{
+                                    display: "flex",
+                                    width: "100%",
+                                    height: "100%",
+                                    justifyContent: column.float ?? "left",
+                                    alignItems: "center",
+                                }}
+                            >
+                                {DateTime.fromISO(value)
+                                    .setZone("America/Sao_Paulo")
+                                    .toFormat("dd/MM/yyyy HH:mm")}
+                            </div>
                         </td>
                     );
                 }
@@ -83,7 +119,17 @@ function TableRowComponent<T>({
                 if (column.type === "tag") {
                     return (
                         <td key={key}>
-                            <Tag>{String(value ?? "-")}</Tag>
+                            <div
+                                style={{
+                                    display: "flex",
+                                    width: "100%",
+                                    height: "100%",
+                                    justifyContent: column.float ?? "left",
+                                    alignItems: "center",
+                                }}
+                            >
+                                <Tag>{String(value ?? "-")}</Tag>
+                            </div>
                         </td>
                     );
                 }
@@ -100,7 +146,30 @@ function TableRowComponent<T>({
                     );
                 }
 
-                return <td key={key}>{displayValue(value)}</td>;
+                return (
+                    <td key={key}>
+                        <div
+                            style={{
+                                display: "flex",
+                                width: "100%",
+                                height: "100%",
+                                justifyContent: column.float ?? "left",
+                                alignItems: "center",
+                            }}
+                        >
+                            <span
+                                title={displayValue(value)}
+                                style={{
+                                    whiteSpace: "nowrap",
+                                    textOverflow: "ellipsis",
+                                    overflow: "hidden",
+                                }}
+                            >
+                                {displayValue(value)}
+                            </span>
+                        </div>
+                    </td>
+                );
             })}
         </tr>
     );

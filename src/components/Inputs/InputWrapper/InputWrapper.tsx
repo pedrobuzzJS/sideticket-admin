@@ -3,11 +3,13 @@ import { type PropsWithChildren, useCallback, useState } from "react";
 import "./InputWrapper.scss";
 import type { Cols } from "../../GridSystem/Grid/Grid.tsx";
 import LineFluid from "../../GridSystem/LineFluid/FluidLine.tsx";
+import type { FieldError } from "react-hook-form";
 
 interface IInputWrapper extends PropsWithChildren {
     label: string;
     name: string;
     col?: Cols;
+    error?: string | FieldError | undefined;
 }
 
 export default function InputWrapper({
@@ -15,6 +17,7 @@ export default function InputWrapper({
     label,
     col = 3,
     children,
+    error,
 }: IInputWrapper) {
     const [isFocused, setIsFocused] = useState<boolean>(false);
 
@@ -34,7 +37,15 @@ export default function InputWrapper({
                 >
                     <div className={"formLabel"}>
                         <label className="inputLabel" htmlFor={name}>
-                            <span className={"leftSpan"}>{label}</span>
+                            <span
+                                className={"leftSpan"}
+                                style={{
+                                    color: error ? "tomato" : "black",
+                                }}
+                            >
+                                {label}
+                                {error && " *"}
+                            </span>
                         </label>
                         <div className={"rightSpan"}></div>
                     </div>

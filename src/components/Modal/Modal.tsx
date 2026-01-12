@@ -31,7 +31,7 @@ export default function Modal({
     onClose,
     children,
     closeOnOverlayClick = false,
-    // footer,
+    footer,
     draggable = false,
 }: IModalProps) {
     const [modalId, setModalId] = useState<string | undefined>("");
@@ -160,12 +160,7 @@ export default function Modal({
                             <div className="modalIcon">📄</div>
                             <div className="modal-title">Título do Modal</div>
                         </div>
-                        {/*<div className="modal-title">*/}
-                        {/*    IIIIIIIIIIIIIIIIIIIIIIIIIIII*/}
-                        {/*</div>*/}
                         <div className="modalActions">
-                            {/*<button className="btn small">—</button>*/}
-                            {/*<button className="btn small">⬜</button>*/}
                             <button
                                 className="btn small"
                                 onClick={onCloseModal}
@@ -178,13 +173,18 @@ export default function Modal({
                     <div className="modalContent">
                         <div className="modalPP">{children}</div>
                     </div>
-                    {/*<div className="modalFooter">{footer}</div>*/}
-                    <div className="modalFooter">
-                        <Btn style={{ backgroundColor: "#329000" }}>
-                            Cancelar
-                        </Btn>
-                        <Btn style={{ backgroundColor: "#329000" }}>Salvar</Btn>
-                    </div>
+                    {footer ? (
+                        footer
+                    ) : (
+                        <div className="modalFooter">
+                            <Btn style={{ backgroundColor: "#329000" }}>
+                                Cancelar
+                            </Btn>
+                            <Btn style={{ backgroundColor: "#329000" }}>
+                                Salvar
+                            </Btn>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

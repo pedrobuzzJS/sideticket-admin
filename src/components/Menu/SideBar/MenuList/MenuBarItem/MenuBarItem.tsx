@@ -5,6 +5,7 @@ import { router } from "../../../../../main.tsx";
 
 export interface MenuBarItemProps {
     icon: string;
+    iconColor?: string;
     label?: string;
     path?: keyof typeof router.routesByPath;
     deepChildren?: MenuBarItemProps[];
@@ -16,6 +17,7 @@ export function MenuBarItem({
     label,
     path,
     deepChildren = [],
+    iconColor,
 }: MenuBarItemProps) {
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
@@ -37,8 +39,12 @@ export function MenuBarItem({
             <div className="menuItem" onClick={handleClick}>
                 <div className="menuIconContainer">
                     <div className="menuIcon">
-                        <i className={icon ?? "fa-regular fa-user"} />
-                        {/*<DynamicTablerIcon name={icon} />*/}
+                        <i
+                            className={icon ?? "fa-regular fa-user"}
+                            style={{
+                                color: iconColor ?? "white",
+                            }}
+                        />
                     </div>
                 </div>
 
@@ -63,6 +69,7 @@ export function MenuBarItem({
                             label={child.name}
                             path={child.route}
                             icon={child.icon}
+                            iconColor={child.iconColor}
                             deepChildren={child.deepChildren}
                         />
                     ))}
