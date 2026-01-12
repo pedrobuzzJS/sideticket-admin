@@ -28,8 +28,8 @@ import { useControlledMenu } from "../../hooks/useControllerMenu.tsx";
 import CircleLoader from "../CustomLoadings/CircleLoader/CircleLoader.tsx";
 
 export interface DataTableProps<T> extends PropsWithChildren {
-    columns: ColumnProps[];
-    data?: T[];
+    columns: ColumnProps<T>[];
+    data: T[];
     loading?: boolean;
     cols?: Cols;
     paginator?: boolean;
@@ -45,7 +45,7 @@ export interface DataTableProps<T> extends PropsWithChildren {
     lastPage?: number;
     perPage?: string;
     totalItemsFromDb?: number;
-    onRowDoubleClick: (item: SelectedRows) => void;
+    onRowDoubleClick?: (item: SelectedRows<T>) => void;
     firstPageUrl?: string;
     lastPageUrl?: string;
     nextPageUrl?: string;
@@ -77,17 +77,14 @@ export function Table<T>({
         if (perPage) setItemsPerPage(perPage);
         if (data) setIsLoading(false);
     }, [data]);
-    useEffect(() => {
-        fetchPage();
-    }, []);
     const headerCheckboxRef = useRef<HTMLInputElement>(null);
-    const { anchorProps, contextProps, menuProps } = useControlledMenu({
+    const { contextProps, menuProps } = useControlledMenu({
         transition: true,
     });
 
     const toggleRow = useCallback(
-        ({ rowIndex, rowValue }: SelectedRows) => {
-            setSelectedRows((prev) => {
+        ({ rowIndex, rowValue }: SelectedRows<T>) => {
+            setSelectedRows((prev: SelectedRows<T>[]) => {
                 const alreadySelected = prev.some(
                     (r) => r.rowIndex === rowIndex,
                 );
@@ -99,7 +96,7 @@ export function Table<T>({
         [setSelectedRows],
     );
 
-    const fetchPage = async (url?: string, item: string) => {
+    const fetchPage = async (url?: string, item?: string) => {
         if (!url) return;
         const queryParamsObject = qs.parse(
             url?.split("v1")[1].substring(1).split("?")[1],
@@ -169,7 +166,34 @@ export function Table<T>({
                             </th>
                             {columns?.map((column, index) =>
                                 column.hidden ? null : (
-                                    <th key={index}>{column.title}</th>
+                                    <th
+                                        key={index}
+                                        style={{
+                                            width: `${column.width ? `${column.width}px` : "100%"}`,
+                                            maxWidth: "100%",
+                                        }}
+                                    >
+                                        <div
+                                            style={{
+                                                display: "flex",
+                                                justifyContent: "center",
+                                                alignItems: "center",
+                                                width: "100%",
+                                                height: "100%",
+                                            }}
+                                        >
+                                            <span
+                                                title={column.title}
+                                                style={{
+                                                    whiteSpace: "nowrap",
+                                                    textOverflow: "ellipsis",
+                                                    overflowX: "hidden",
+                                                }}
+                                            >
+                                                {column.title}
+                                            </span>
+                                        </div>
+                                    </th>
                                 ),
                             )}
                         </tr>
@@ -203,7 +227,12 @@ export function Table<T>({
                                     isSelected={selectedRows.some(
                                         (r) => r.rowIndex === rowIndex,
                                     )}
-                                    onToggle={toggleRow}
+                                    onToggle={() =>
+                                        toggleRow({
+                                            rowIndex: rowIndex,
+                                            rowValue: item,
+                                        })
+                                    }
                                     onDoubleClick={onRowDoubleClick}
                                 />
                             ))

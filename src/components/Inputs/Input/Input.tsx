@@ -26,15 +26,16 @@ export function InputD({
     const error = errors[name]?.message as string | undefined;
 
     return (
-        <InputWrapper label={label} name={name} col={col}>
-            <input
-                type={type}
-                id={name}
-                style={{ width: "100%" }}
-                {...register(name)}
-                {...props}
-            />
-            {error && <span style={{ color: "red" }}>{error}</span>}
-        </InputWrapper>
+        <>
+            <InputWrapper label={label} name={name} col={col} error={error}>
+                <input
+                    type={type}
+                    id={name}
+                    style={{ width: "100%" }}
+                    {...register(name)}
+                    {...props}
+                />
+            </InputWrapper>
+        </>
     );
 }

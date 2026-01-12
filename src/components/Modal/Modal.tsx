@@ -31,10 +31,10 @@ export default function Modal({
     onClose,
     children,
     closeOnOverlayClick = false,
-    // footer,
+    footer,
     draggable = false,
 }: IModalProps) {
-    const [modalId, setModalId] = useState<string | undefined>(null);
+    const [modalId, setModalId] = useState<string | undefined>("");
     const [isDragging, setIsDragging] = useState<boolean>(false);
     const [position, setPosition] = useState<{ x: number; y: number }>({
         x: 0,
@@ -48,7 +48,7 @@ export default function Modal({
     const startPosition = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
     const modalRef = useRef<HTMLDivElement | null>(null);
     const windowSize = useWindowSize();
-    const [zIndex, setZIndex] = useState<number>(100);
+    const [zIndex] = useState<number>(100);
 
     useEffect(() => {
         setPosition({ x: 0, y: 0 });
@@ -160,12 +160,7 @@ export default function Modal({
                             <div className="modalIcon">📄</div>
                             <div className="modal-title">Título do Modal</div>
                         </div>
-                        {/*<div className="modal-title">*/}
-                        {/*    IIIIIIIIIIIIIIIIIIIIIIIIIIII*/}
-                        {/*</div>*/}
                         <div className="modalActions">
-                            {/*<button className="btn small">—</button>*/}
-                            {/*<button className="btn small">⬜</button>*/}
                             <button
                                 className="btn small"
                                 onClick={onCloseModal}
@@ -178,13 +173,18 @@ export default function Modal({
                     <div className="modalContent">
                         <div className="modalPP">{children}</div>
                     </div>
-                    {/*<div className="modalFooter">{footer}</div>*/}
-                    <div className="modalFooter">
-                        <Btn style={{ backgroundColor: "#329000" }}>
-                            Cancelar
-                        </Btn>
-                        <Btn style={{ backgroundColor: "#329000" }}>Salvar</Btn>
-                    </div>
+                    {footer ? (
+                        footer
+                    ) : (
+                        <div className="modalFooter">
+                            <Btn style={{ backgroundColor: "#329000" }}>
+                                Cancelar
+                            </Btn>
+                            <Btn style={{ backgroundColor: "#329000" }}>
+                                Salvar
+                            </Btn>
+                        </div>
+                    )}
                 </div>
             </div>
         </div>

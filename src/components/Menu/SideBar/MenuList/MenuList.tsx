@@ -1,10 +1,29 @@
 import "./MenuList.scss";
 import { MenuBarItem } from "./MenuBarItem/MenuBarItem.tsx";
+import { useQuery } from "@tanstack/react-query";
+import { api } from "../../../../services/api.ts";
 
 export function MenuList() {
+    const menuQuery = useQuery({
+        queryKey: ["nestedmenu"],
+        queryFn: async () => {
+            const { data } = await api.get("nestedmenu");
+            return data;
+        },
+    });
     return (
         <ul className="menuList">
-            <MenuBarItem />
+            {menuQuery?.data?.map((menu) => {
+                return (
+                    <MenuBarItem
+                        label={menu.name}
+                        path={menu.route}
+                        icon={menu.icon}
+                        iconColor={menu.iconColor}
+                        deepChildren={menu.deepChildren}
+                    />
+                );
+            })}
         </ul>
     );
 }

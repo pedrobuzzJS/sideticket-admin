@@ -16,9 +16,20 @@ export function SideBar() {
                     className={`${styles.sideBarHeader} ${
                         isSideBarOpen ? styles.open : styles.sideBarHeader
                     }`}
+                    // onClick={toggleSideBar}
+                >
+                    <i
+                        className="fa-solid fa-ticket"
+                        style={{ fontSize: "30px", color: "white" }}
+                    />
+                </div>
+                <div
+                    className={`${styles.sideBarFooter} ${
+                        isSideBarOpen ? styles.open : styles.sideBarFooter
+                    }`}
                     onClick={toggleSideBar}
                 >
-                    {/*<i className="pi pi-bars" style={{ fontSize: "2rem" }}></i>*/}
+                    <i className="fa-solid fa-angles-right"></i>
                 </div>
                 <div
                     className={`${styles.list} ${isSideBarOpen ? styles.listOpen : ""}`}
@@ -28,16 +39,19 @@ export function SideBar() {
                     <div
                         style={{
                             display: "block",
-                            height: "60px",
+                            height: "50px",
                         }}
                     />
                     <div
                         style={{
                             height: "100%",
                             width: "100%",
+                            overflowX: "hidden",
                         }}
                     >
-                        <MenuList />
+                        <div className={styles.testeCoisa}>
+                            <MenuList />
+                        </div>
                     </div>
                 </div>
                 <div

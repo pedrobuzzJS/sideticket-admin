@@ -8,52 +8,686 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { Route as rootRouteImport } from './pages/__root'
-import { Route as IndexRouteImport } from './pages/index'
+import { Route as rootRouteImport } from "./pages/__root";
+import { Route as IndexRouteImport } from "./pages/index";
+import { Route as ListUserRouteImport } from "./pages/list/user";
+import { Route as ListTicketRouteImport } from "./pages/list/ticket";
+import { Route as ListScheduledtaskRouteImport } from "./pages/list/scheduledtask";
+import { Route as ListRoutineRouteImport } from "./pages/list/routine";
+import { Route as ListProductderivationRouteImport } from "./pages/list/productderivation";
+import { Route as ListProductRouteImport } from "./pages/list/product";
+import { Route as ListPersonRouteImport } from "./pages/list/person";
+import { Route as ListPermissionRouteImport } from "./pages/list/permission";
+import { Route as ListPageRouteImport } from "./pages/list/page";
+import { Route as ListNotificationRouteImport } from "./pages/list/notification";
+import { Route as ListModuleRouteImport } from "./pages/list/module";
+import { Route as ListMenuRouteImport } from "./pages/list/menu";
+import { Route as ListInventorymovementRouteImport } from "./pages/list/inventorymovement";
+import { Route as ListInventoryRouteImport } from "./pages/list/inventory";
+import { Route as ListFormRouteImport } from "./pages/list/form";
+import { Route as ListFileRouteImport } from "./pages/list/file";
+import { Route as ListEventRouteImport } from "./pages/list/event";
+import { Route as ListDocumenttemplateRouteImport } from "./pages/list/documenttemplate";
+import { Route as ListDocumentsignatureRouteImport } from "./pages/list/documentsignature";
+import { Route as ListDerivationitemRouteImport } from "./pages/list/derivationitem";
+import { Route as ListDerivationRouteImport } from "./pages/list/derivation";
+import { Route as ListConfigurationRouteImport } from "./pages/list/configuration";
+import { Route as ListCompanyRouteImport } from "./pages/list/company";
+import { Route as ListCategoryRouteImport } from "./pages/list/category";
+import { Route as ListBrandRouteImport } from "./pages/list/brand";
+import { Route as ListBannergroupRouteImport } from "./pages/list/bannergroup";
+import { Route as ListBannerRouteImport } from "./pages/list/banner";
+import { Route as ListAsynctaskRouteImport } from "./pages/list/asynctask";
+import { Route as AuthSignInRouteImport } from "./pages/_auth/sign-in";
+import { Route as AuthLoginRouteImport } from "./pages/_auth/login";
 
 const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
+    id: "/",
+    path: "/",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListUserRoute = ListUserRouteImport.update({
+    id: "/list/user",
+    path: "/list/user",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListTicketRoute = ListTicketRouteImport.update({
+    id: "/list/ticket",
+    path: "/list/ticket",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListScheduledtaskRoute = ListScheduledtaskRouteImport.update({
+    id: "/list/scheduledtask",
+    path: "/list/scheduledtask",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListRoutineRoute = ListRoutineRouteImport.update({
+    id: "/list/routine",
+    path: "/list/routine",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListProductderivationRoute = ListProductderivationRouteImport.update({
+    id: "/list/productderivation",
+    path: "/list/productderivation",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListProductRoute = ListProductRouteImport.update({
+    id: "/list/product",
+    path: "/list/product",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListPersonRoute = ListPersonRouteImport.update({
+    id: "/list/person",
+    path: "/list/person",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListPermissionRoute = ListPermissionRouteImport.update({
+    id: "/list/permission",
+    path: "/list/permission",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListPageRoute = ListPageRouteImport.update({
+    id: "/list/page",
+    path: "/list/page",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListNotificationRoute = ListNotificationRouteImport.update({
+    id: "/list/notification",
+    path: "/list/notification",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListModuleRoute = ListModuleRouteImport.update({
+    id: "/list/module",
+    path: "/list/module",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListMenuRoute = ListMenuRouteImport.update({
+    id: "/list/menu",
+    path: "/list/menu",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListInventorymovementRoute = ListInventorymovementRouteImport.update({
+    id: "/list/inventorymovement",
+    path: "/list/inventorymovement",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListInventoryRoute = ListInventoryRouteImport.update({
+    id: "/list/inventory",
+    path: "/list/inventory",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListFormRoute = ListFormRouteImport.update({
+    id: "/list/form",
+    path: "/list/form",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListFileRoute = ListFileRouteImport.update({
+    id: "/list/file",
+    path: "/list/file",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListEventRoute = ListEventRouteImport.update({
+    id: "/list/event",
+    path: "/list/event",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListDocumenttemplateRoute = ListDocumenttemplateRouteImport.update({
+    id: "/list/documenttemplate",
+    path: "/list/documenttemplate",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListDocumentsignatureRoute = ListDocumentsignatureRouteImport.update({
+    id: "/list/documentsignature",
+    path: "/list/documentsignature",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListDerivationitemRoute = ListDerivationitemRouteImport.update({
+    id: "/list/derivationitem",
+    path: "/list/derivationitem",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListDerivationRoute = ListDerivationRouteImport.update({
+    id: "/list/derivation",
+    path: "/list/derivation",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListConfigurationRoute = ListConfigurationRouteImport.update({
+    id: "/list/configuration",
+    path: "/list/configuration",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListCompanyRoute = ListCompanyRouteImport.update({
+    id: "/list/company",
+    path: "/list/company",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListCategoryRoute = ListCategoryRouteImport.update({
+    id: "/list/category",
+    path: "/list/category",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListBrandRoute = ListBrandRouteImport.update({
+    id: "/list/brand",
+    path: "/list/brand",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListBannergroupRoute = ListBannergroupRouteImport.update({
+    id: "/list/bannergroup",
+    path: "/list/bannergroup",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListBannerRoute = ListBannerRouteImport.update({
+    id: "/list/banner",
+    path: "/list/banner",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const ListAsynctaskRoute = ListAsynctaskRouteImport.update({
+    id: "/list/asynctask",
+    path: "/list/asynctask",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const AuthSignInRoute = AuthSignInRouteImport.update({
+    id: "/_auth/sign-in",
+    path: "/sign-in",
+    getParentRoute: () => rootRouteImport,
+} as any);
+const AuthLoginRoute = AuthLoginRouteImport.update({
+    id: "/_auth/login",
+    path: "/login",
+    getParentRoute: () => rootRouteImport,
+} as any);
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+    "/": typeof IndexRoute;
+    "/login": typeof AuthLoginRoute;
+    "/sign-in": typeof AuthSignInRoute;
+    "/list/asynctask": typeof ListAsynctaskRoute;
+    "/list/banner": typeof ListBannerRoute;
+    "/list/bannergroup": typeof ListBannergroupRoute;
+    "/list/brand": typeof ListBrandRoute;
+    "/list/category": typeof ListCategoryRoute;
+    "/list/company": typeof ListCompanyRoute;
+    "/list/configuration": typeof ListConfigurationRoute;
+    "/list/derivation": typeof ListDerivationRoute;
+    "/list/derivationitem": typeof ListDerivationitemRoute;
+    "/list/documentsignature": typeof ListDocumentsignatureRoute;
+    "/list/documenttemplate": typeof ListDocumenttemplateRoute;
+    "/list/event": typeof ListEventRoute;
+    "/list/file": typeof ListFileRoute;
+    "/list/form": typeof ListFormRoute;
+    "/list/inventory": typeof ListInventoryRoute;
+    "/list/inventorymovement": typeof ListInventorymovementRoute;
+    "/list/menu": typeof ListMenuRoute;
+    "/list/module": typeof ListModuleRoute;
+    "/list/notification": typeof ListNotificationRoute;
+    "/list/page": typeof ListPageRoute;
+    "/list/permission": typeof ListPermissionRoute;
+    "/list/person": typeof ListPersonRoute;
+    "/list/product": typeof ListProductRoute;
+    "/list/productderivation": typeof ListProductderivationRoute;
+    "/list/routine": typeof ListRoutineRoute;
+    "/list/scheduledtask": typeof ListScheduledtaskRoute;
+    "/list/ticket": typeof ListTicketRoute;
+    "/list/user": typeof ListUserRoute;
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
+    "/": typeof IndexRoute;
+    "/login": typeof AuthLoginRoute;
+    "/sign-in": typeof AuthSignInRoute;
+    "/list/asynctask": typeof ListAsynctaskRoute;
+    "/list/banner": typeof ListBannerRoute;
+    "/list/bannergroup": typeof ListBannergroupRoute;
+    "/list/brand": typeof ListBrandRoute;
+    "/list/category": typeof ListCategoryRoute;
+    "/list/company": typeof ListCompanyRoute;
+    "/list/configuration": typeof ListConfigurationRoute;
+    "/list/derivation": typeof ListDerivationRoute;
+    "/list/derivationitem": typeof ListDerivationitemRoute;
+    "/list/documentsignature": typeof ListDocumentsignatureRoute;
+    "/list/documenttemplate": typeof ListDocumenttemplateRoute;
+    "/list/event": typeof ListEventRoute;
+    "/list/file": typeof ListFileRoute;
+    "/list/form": typeof ListFormRoute;
+    "/list/inventory": typeof ListInventoryRoute;
+    "/list/inventorymovement": typeof ListInventorymovementRoute;
+    "/list/menu": typeof ListMenuRoute;
+    "/list/module": typeof ListModuleRoute;
+    "/list/notification": typeof ListNotificationRoute;
+    "/list/page": typeof ListPageRoute;
+    "/list/permission": typeof ListPermissionRoute;
+    "/list/person": typeof ListPersonRoute;
+    "/list/product": typeof ListProductRoute;
+    "/list/productderivation": typeof ListProductderivationRoute;
+    "/list/routine": typeof ListRoutineRoute;
+    "/list/scheduledtask": typeof ListScheduledtaskRoute;
+    "/list/ticket": typeof ListTicketRoute;
+    "/list/user": typeof ListUserRoute;
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
+    __root__: typeof rootRouteImport;
+    "/": typeof IndexRoute;
+    "/_auth/login": typeof AuthLoginRoute;
+    "/_auth/sign-in": typeof AuthSignInRoute;
+    "/list/asynctask": typeof ListAsynctaskRoute;
+    "/list/banner": typeof ListBannerRoute;
+    "/list/bannergroup": typeof ListBannergroupRoute;
+    "/list/brand": typeof ListBrandRoute;
+    "/list/category": typeof ListCategoryRoute;
+    "/list/company": typeof ListCompanyRoute;
+    "/list/configuration": typeof ListConfigurationRoute;
+    "/list/derivation": typeof ListDerivationRoute;
+    "/list/derivationitem": typeof ListDerivationitemRoute;
+    "/list/documentsignature": typeof ListDocumentsignatureRoute;
+    "/list/documenttemplate": typeof ListDocumenttemplateRoute;
+    "/list/event": typeof ListEventRoute;
+    "/list/file": typeof ListFileRoute;
+    "/list/form": typeof ListFormRoute;
+    "/list/inventory": typeof ListInventoryRoute;
+    "/list/inventorymovement": typeof ListInventorymovementRoute;
+    "/list/menu": typeof ListMenuRoute;
+    "/list/module": typeof ListModuleRoute;
+    "/list/notification": typeof ListNotificationRoute;
+    "/list/page": typeof ListPageRoute;
+    "/list/permission": typeof ListPermissionRoute;
+    "/list/person": typeof ListPersonRoute;
+    "/list/product": typeof ListProductRoute;
+    "/list/productderivation": typeof ListProductderivationRoute;
+    "/list/routine": typeof ListRoutineRoute;
+    "/list/scheduledtask": typeof ListScheduledtaskRoute;
+    "/list/ticket": typeof ListTicketRoute;
+    "/list/user": typeof ListUserRoute;
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
-  fileRoutesById: FileRoutesById
+    fileRoutesByFullPath: FileRoutesByFullPath;
+    fullPaths:
+        | "/"
+        | "/login"
+        | "/sign-in"
+        | "/list/asynctask"
+        | "/list/banner"
+        | "/list/bannergroup"
+        | "/list/brand"
+        | "/list/category"
+        | "/list/company"
+        | "/list/configuration"
+        | "/list/derivation"
+        | "/list/derivationitem"
+        | "/list/documentsignature"
+        | "/list/documenttemplate"
+        | "/list/event"
+        | "/list/file"
+        | "/list/form"
+        | "/list/inventory"
+        | "/list/inventorymovement"
+        | "/list/menu"
+        | "/list/module"
+        | "/list/notification"
+        | "/list/page"
+        | "/list/permission"
+        | "/list/person"
+        | "/list/product"
+        | "/list/productderivation"
+        | "/list/routine"
+        | "/list/scheduledtask"
+        | "/list/ticket"
+        | "/list/user";
+    fileRoutesByTo: FileRoutesByTo;
+    to:
+        | "/"
+        | "/login"
+        | "/sign-in"
+        | "/list/asynctask"
+        | "/list/banner"
+        | "/list/bannergroup"
+        | "/list/brand"
+        | "/list/category"
+        | "/list/company"
+        | "/list/configuration"
+        | "/list/derivation"
+        | "/list/derivationitem"
+        | "/list/documentsignature"
+        | "/list/documenttemplate"
+        | "/list/event"
+        | "/list/file"
+        | "/list/form"
+        | "/list/inventory"
+        | "/list/inventorymovement"
+        | "/list/menu"
+        | "/list/module"
+        | "/list/notification"
+        | "/list/page"
+        | "/list/permission"
+        | "/list/person"
+        | "/list/product"
+        | "/list/productderivation"
+        | "/list/routine"
+        | "/list/scheduledtask"
+        | "/list/ticket"
+        | "/list/user";
+    id:
+        | "__root__"
+        | "/"
+        | "/_auth/login"
+        | "/_auth/sign-in"
+        | "/list/asynctask"
+        | "/list/banner"
+        | "/list/bannergroup"
+        | "/list/brand"
+        | "/list/category"
+        | "/list/company"
+        | "/list/configuration"
+        | "/list/derivation"
+        | "/list/derivationitem"
+        | "/list/documentsignature"
+        | "/list/documenttemplate"
+        | "/list/event"
+        | "/list/file"
+        | "/list/form"
+        | "/list/inventory"
+        | "/list/inventorymovement"
+        | "/list/menu"
+        | "/list/module"
+        | "/list/notification"
+        | "/list/page"
+        | "/list/permission"
+        | "/list/person"
+        | "/list/product"
+        | "/list/productderivation"
+        | "/list/routine"
+        | "/list/scheduledtask"
+        | "/list/ticket"
+        | "/list/user";
+    fileRoutesById: FileRoutesById;
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
+    IndexRoute: typeof IndexRoute;
+    AuthLoginRoute: typeof AuthLoginRoute;
+    AuthSignInRoute: typeof AuthSignInRoute;
+    ListAsynctaskRoute: typeof ListAsynctaskRoute;
+    ListBannerRoute: typeof ListBannerRoute;
+    ListBannergroupRoute: typeof ListBannergroupRoute;
+    ListBrandRoute: typeof ListBrandRoute;
+    ListCategoryRoute: typeof ListCategoryRoute;
+    ListCompanyRoute: typeof ListCompanyRoute;
+    ListConfigurationRoute: typeof ListConfigurationRoute;
+    ListDerivationRoute: typeof ListDerivationRoute;
+    ListDerivationitemRoute: typeof ListDerivationitemRoute;
+    ListDocumentsignatureRoute: typeof ListDocumentsignatureRoute;
+    ListDocumenttemplateRoute: typeof ListDocumenttemplateRoute;
+    ListEventRoute: typeof ListEventRoute;
+    ListFileRoute: typeof ListFileRoute;
+    ListFormRoute: typeof ListFormRoute;
+    ListInventoryRoute: typeof ListInventoryRoute;
+    ListInventorymovementRoute: typeof ListInventorymovementRoute;
+    ListMenuRoute: typeof ListMenuRoute;
+    ListModuleRoute: typeof ListModuleRoute;
+    ListNotificationRoute: typeof ListNotificationRoute;
+    ListPageRoute: typeof ListPageRoute;
+    ListPermissionRoute: typeof ListPermissionRoute;
+    ListPersonRoute: typeof ListPersonRoute;
+    ListProductRoute: typeof ListProductRoute;
+    ListProductderivationRoute: typeof ListProductderivationRoute;
+    ListRoutineRoute: typeof ListRoutineRoute;
+    ListScheduledtaskRoute: typeof ListScheduledtaskRoute;
+    ListTicketRoute: typeof ListTicketRoute;
+    ListUserRoute: typeof ListUserRoute;
 }
 
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
+declare module "@tanstack/react-router" {
+    interface FileRoutesByPath {
+        "/": {
+            id: "/";
+            path: "/";
+            fullPath: "/";
+            preLoaderRoute: typeof IndexRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/user": {
+            id: "/list/user";
+            path: "/list/user";
+            fullPath: "/list/user";
+            preLoaderRoute: typeof ListUserRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/ticket": {
+            id: "/list/ticket";
+            path: "/list/ticket";
+            fullPath: "/list/ticket";
+            preLoaderRoute: typeof ListTicketRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/scheduledtask": {
+            id: "/list/scheduledtask";
+            path: "/list/scheduledtask";
+            fullPath: "/list/scheduledtask";
+            preLoaderRoute: typeof ListScheduledtaskRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/routine": {
+            id: "/list/routine";
+            path: "/list/routine";
+            fullPath: "/list/routine";
+            preLoaderRoute: typeof ListRoutineRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/productderivation": {
+            id: "/list/productderivation";
+            path: "/list/productderivation";
+            fullPath: "/list/productderivation";
+            preLoaderRoute: typeof ListProductderivationRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/product": {
+            id: "/list/product";
+            path: "/list/product";
+            fullPath: "/list/product";
+            preLoaderRoute: typeof ListProductRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/person": {
+            id: "/list/person";
+            path: "/list/person";
+            fullPath: "/list/person";
+            preLoaderRoute: typeof ListPersonRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/permission": {
+            id: "/list/permission";
+            path: "/list/permission";
+            fullPath: "/list/permission";
+            preLoaderRoute: typeof ListPermissionRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/page": {
+            id: "/list/page";
+            path: "/list/page";
+            fullPath: "/list/page";
+            preLoaderRoute: typeof ListPageRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/notification": {
+            id: "/list/notification";
+            path: "/list/notification";
+            fullPath: "/list/notification";
+            preLoaderRoute: typeof ListNotificationRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/module": {
+            id: "/list/module";
+            path: "/list/module";
+            fullPath: "/list/module";
+            preLoaderRoute: typeof ListModuleRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/menu": {
+            id: "/list/menu";
+            path: "/list/menu";
+            fullPath: "/list/menu";
+            preLoaderRoute: typeof ListMenuRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/inventorymovement": {
+            id: "/list/inventorymovement";
+            path: "/list/inventorymovement";
+            fullPath: "/list/inventorymovement";
+            preLoaderRoute: typeof ListInventorymovementRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/inventory": {
+            id: "/list/inventory";
+            path: "/list/inventory";
+            fullPath: "/list/inventory";
+            preLoaderRoute: typeof ListInventoryRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/form": {
+            id: "/list/form";
+            path: "/list/form";
+            fullPath: "/list/form";
+            preLoaderRoute: typeof ListFormRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/file": {
+            id: "/list/file";
+            path: "/list/file";
+            fullPath: "/list/file";
+            preLoaderRoute: typeof ListFileRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/event": {
+            id: "/list/event";
+            path: "/list/event";
+            fullPath: "/list/event";
+            preLoaderRoute: typeof ListEventRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/documenttemplate": {
+            id: "/list/documenttemplate";
+            path: "/list/documenttemplate";
+            fullPath: "/list/documenttemplate";
+            preLoaderRoute: typeof ListDocumenttemplateRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/documentsignature": {
+            id: "/list/documentsignature";
+            path: "/list/documentsignature";
+            fullPath: "/list/documentsignature";
+            preLoaderRoute: typeof ListDocumentsignatureRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/derivationitem": {
+            id: "/list/derivationitem";
+            path: "/list/derivationitem";
+            fullPath: "/list/derivationitem";
+            preLoaderRoute: typeof ListDerivationitemRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/derivation": {
+            id: "/list/derivation";
+            path: "/list/derivation";
+            fullPath: "/list/derivation";
+            preLoaderRoute: typeof ListDerivationRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/configuration": {
+            id: "/list/configuration";
+            path: "/list/configuration";
+            fullPath: "/list/configuration";
+            preLoaderRoute: typeof ListConfigurationRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/company": {
+            id: "/list/company";
+            path: "/list/company";
+            fullPath: "/list/company";
+            preLoaderRoute: typeof ListCompanyRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/category": {
+            id: "/list/category";
+            path: "/list/category";
+            fullPath: "/list/category";
+            preLoaderRoute: typeof ListCategoryRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/brand": {
+            id: "/list/brand";
+            path: "/list/brand";
+            fullPath: "/list/brand";
+            preLoaderRoute: typeof ListBrandRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/bannergroup": {
+            id: "/list/bannergroup";
+            path: "/list/bannergroup";
+            fullPath: "/list/bannergroup";
+            preLoaderRoute: typeof ListBannergroupRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/banner": {
+            id: "/list/banner";
+            path: "/list/banner";
+            fullPath: "/list/banner";
+            preLoaderRoute: typeof ListBannerRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/list/asynctask": {
+            id: "/list/asynctask";
+            path: "/list/asynctask";
+            fullPath: "/list/asynctask";
+            preLoaderRoute: typeof ListAsynctaskRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/_auth/sign-in": {
+            id: "/_auth/sign-in";
+            path: "/sign-in";
+            fullPath: "/sign-in";
+            preLoaderRoute: typeof AuthSignInRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
+        "/_auth/login": {
+            id: "/_auth/login";
+            path: "/login";
+            fullPath: "/login";
+            preLoaderRoute: typeof AuthLoginRouteImport;
+            parentRoute: typeof rootRouteImport;
+        };
     }
-  }
 }
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-}
+    IndexRoute: IndexRoute,
+    AuthLoginRoute: AuthLoginRoute,
+    AuthSignInRoute: AuthSignInRoute,
+    ListAsynctaskRoute: ListAsynctaskRoute,
+    ListBannerRoute: ListBannerRoute,
+    ListBannergroupRoute: ListBannergroupRoute,
+    ListBrandRoute: ListBrandRoute,
+    ListCategoryRoute: ListCategoryRoute,
+    ListCompanyRoute: ListCompanyRoute,
+    ListConfigurationRoute: ListConfigurationRoute,
+    ListDerivationRoute: ListDerivationRoute,
+    ListDerivationitemRoute: ListDerivationitemRoute,
+    ListDocumentsignatureRoute: ListDocumentsignatureRoute,
+    ListDocumenttemplateRoute: ListDocumenttemplateRoute,
+    ListEventRoute: ListEventRoute,
+    ListFileRoute: ListFileRoute,
+    ListFormRoute: ListFormRoute,
+    ListInventoryRoute: ListInventoryRoute,
+    ListInventorymovementRoute: ListInventorymovementRoute,
+    ListMenuRoute: ListMenuRoute,
+    ListModuleRoute: ListModuleRoute,
+    ListNotificationRoute: ListNotificationRoute,
+    ListPageRoute: ListPageRoute,
+    ListPermissionRoute: ListPermissionRoute,
+    ListPersonRoute: ListPersonRoute,
+    ListProductRoute: ListProductRoute,
+    ListProductderivationRoute: ListProductderivationRoute,
+    ListRoutineRoute: ListRoutineRoute,
+    ListScheduledtaskRoute: ListScheduledtaskRoute,
+    ListTicketRoute: ListTicketRoute,
+    ListUserRoute: ListUserRoute,
+};
 export const routeTree = rootRouteImport
-  ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>()
+    ._addFileChildren(rootRouteChildren)
+    ._addFileTypes<FileRouteTypes>();

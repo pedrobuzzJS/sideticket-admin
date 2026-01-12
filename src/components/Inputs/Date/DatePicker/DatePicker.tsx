@@ -22,7 +22,7 @@ interface IDatePicker {
     value?: string;
     onChange?: (value: string) => void;
     col?: Cols;
-    disabled: boolean;
+    disabled?: boolean;
 }
 
 export function RslDatePicker({
@@ -45,14 +45,13 @@ export function RslDatePicker({
     );
 
     return (
-        <InputWrapper label={label} name={name} col={col}>
+        <InputWrapper label={label} name={name} col={col} error={error}>
             <DatePicker
                 onChange={(item) => handleChange(item)}
                 value={value}
                 format={"dd/MM/yyyy"}
                 disabled={disabled}
             />
-            {error && error.message}
         </InputWrapper>
     );
 }

@@ -1,24 +1,80 @@
 import "./MenuBarItem.scss";
-import { useMenuStore } from "../../../../../stores/menuStore.tsx";
+import { useCallback, useState } from "react";
+import { useNavigate } from "@tanstack/react-router";
+import { router } from "../../../../../main.tsx";
 
-export function MenuBarItem() {
-    const { isSideBarOpen } = useMenuStore();
+export interface MenuBarItemProps {
+    icon: string;
+    iconColor?: string;
+    label?: string;
+    path?: keyof typeof router.routesByPath;
+    deepChildren?: MenuBarItemProps[];
+    hasChildren?: boolean;
+}
+
+export function MenuBarItem({
+    icon,
+    label,
+    path,
+    deepChildren = [],
+    iconColor,
+}: MenuBarItemProps) {
+    const navigate = useNavigate();
+    const [open, setOpen] = useState(false);
+
+    const hasChildren = deepChildren.length > 0;
+
+    const handleClick = useCallback(async () => {
+        if (hasChildren) {
+            setOpen((prev) => !prev);
+            return;
+        }
+        if (path) {
+            await navigate({ to: path });
+        }
+    }, [hasChildren, navigate, path]);
+
     return (
-        <li className="menuBarItem">
-            <div className="menuItem">
-                <div className="menuIcon">
-                    <i
-                        className="fa-regular fa-user"
-                        style={{ color: "white" }}
-                    />
+        <li className={`menuBarItem ${open ? "open" : ""}`}>
+            <div className="menuItem" onClick={handleClick}>
+                <div className="menuIconContainer">
+                    <div className="menuIcon">
+                        <i
+                            className={icon ?? "fa-regular fa-user"}
+                            style={{
+                                color: iconColor ?? "white",
+                            }}
+                        />
+                    </div>
                 </div>
-                {/*<div className="menuItemDetails">*/}
-                <div
-                    className={`menuItemDetails ${isSideBarOpen ? "menuItemDetailsOpen" : ""}`}
-                >
-                    <span>Principal</span>
+
+                <div className="menuItemDetails">
+                    <div className="menuDetails">
+                        <span className="menuText">{label}</span>
+                    </div>
+
+                    {hasChildren && (
+                        <div className="menuExpander">
+                            <i className="fa-solid fa-chevron-down" />
+                        </div>
+                    )}
                 </div>
             </div>
+
+            {hasChildren && open && (
+                <ul className="submenu">
+                    {deepChildren.map((child, index) => (
+                        <MenuBarItem
+                            key={index}
+                            label={child.name}
+                            path={child.route}
+                            icon={child.icon}
+                            iconColor={child.iconColor}
+                            deepChildren={child.deepChildren}
+                        />
+                    ))}
+                </ul>
+            )}
         </li>
     );
 }

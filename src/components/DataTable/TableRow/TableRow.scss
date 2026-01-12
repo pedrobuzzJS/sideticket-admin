@@ -1,4 +1,7 @@
 .tableRow {
+    td {
+        color: black;
+    }
     &:hover {
         background-color: #dedede !important;
         transition: ease-in-out 50ms;
