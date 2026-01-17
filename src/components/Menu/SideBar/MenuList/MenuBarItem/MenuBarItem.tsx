@@ -4,7 +4,7 @@ import { useNavigate } from "@tanstack/react-router";
 import { router } from "../../../../../main.tsx";
 
 export interface MenuBarItemProps {
-    icon: string;
+    icon?: string;
     iconColor?: string;
     label?: string;
     path?: keyof typeof router.routesByPath;
@@ -39,12 +39,14 @@ export function MenuBarItem({
             <div className="menuItem" onClick={handleClick}>
                 <div className="menuIconContainer">
                     <div className="menuIcon">
-                        <i
-                            className={icon ?? "fa-regular fa-user"}
-                            style={{
-                                color: iconColor ?? "white",
-                            }}
-                        />
+                        {icon && (
+                            <i
+                                className={icon ?? "fa-regular fa-user"}
+                                style={{
+                                    color: iconColor ?? "white",
+                                }}
+                            />
+                        )}
                     </div>
                 </div>
 
@@ -68,7 +70,7 @@ export function MenuBarItem({
                             key={index}
                             label={child.name}
                             path={child.route}
-                            icon={child.icon}
+                            // icon={child.icon}
                             iconColor={child.iconColor}
                             deepChildren={child.deepChildren}
                         />

@@ -48,6 +48,7 @@ function RouteComponent() {
             field: "createdAt",
             hidden: false,
             type: "dateTime",
+            float: "center",
         },
         { title: "updatedAt", field: "updatedAt", hidden: true },
         { title: "deletedAt", field: "deletedAt", hidden: true },

@@ -28,7 +28,8 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                background-color: #464f61;
+                //background-color: #464f61;
+                background-color: #2b303b;
                 width: 80%;
                 height: 80%;
                 border-radius: 7% 0 0 7%;
@@ -45,7 +46,8 @@
         .menuItemDetails {
             height: 80%;
             width: 200px;
-            background-color: #464f61;
+            //background-color: #464f61;
+            background-color: #2b303b;
             display: flex;
 
             .menuDetails {
@@ -101,7 +103,7 @@
 
     .submenu {
         width: 100%;
-        padding-left: 10px;
+        //padding-left: 10px;
         display: flex;
         flex-direction: column;
         gap: 4px;
