@@ -2,9 +2,10 @@ import "./MenuBarItem.scss";
 import { useCallback, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import { router } from "../../../../../main.tsx";
+import {DynaicIcon, type IconsName} from "../../../../../icons.tsx";
 
 export interface MenuBarItemProps {
-    icon?: string;
+    icon?: IconsName;
     iconColor?: string;
     label?: string;
     path?: keyof typeof router.routesByPath;
@@ -40,12 +41,7 @@ export function MenuBarItem({
                 <div className="menuIconContainer">
                     <div className="menuIcon">
                         {icon && (
-                            <i
-                                className={icon ?? "fa-regular fa-user"}
-                                style={{
-                                    color: iconColor ?? "white",
-                                }}
-                            />
+                            <DynaicIcon name={icon} fontSize={25} color={iconColor} />
                         )}
                     </div>
                 </div>
@@ -57,6 +53,7 @@ export function MenuBarItem({
 
                     {hasChildren && (
                         <div className="menuExpander">
+                            <DynaicIcon name={"ArrowDown2Thin"} fontSize={30} color={"#ffffff"} />
                             <i className="fa-solid fa-chevron-down" />
                         </div>
                     )}
@@ -70,7 +67,7 @@ export function MenuBarItem({
                             key={index}
                             label={child.name}
                             path={child.route}
-                            // icon={child.icon}
+                            icon={child.icon}
                             iconColor={child.iconColor}
                             deepChildren={child.deepChildren}
                         />

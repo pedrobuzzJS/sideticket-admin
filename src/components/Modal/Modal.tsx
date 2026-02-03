@@ -158,7 +158,7 @@ export default function Modal({
                             onMouseUp={onMouseUp}
                         >
                             <div className="modalIcon">📄</div>
-                            <div className="modal-title">Título do Modal</div>
+                            <div className="modal-title">Adicionar Módulo</div>
                         </div>
                         <div className="modalActions">
                             <button

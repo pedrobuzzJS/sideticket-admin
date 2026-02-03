@@ -1,6 +1,7 @@
 import styles from "./SideBar.module.scss";
 import { useMenuStore } from "../../../stores/menuStore.tsx";
 import { MenuList } from "./MenuList/MenuList.tsx";
+import {DynaicIcon} from "../../../icons.tsx";
 
 export function SideBar() {
     const { isSideBarOpen, toggleSideBar, handleSideBar } = useMenuStore();
@@ -18,10 +19,12 @@ export function SideBar() {
                     }`}
                     // onClick={toggleSideBar}
                 >
-                    <i
-                        className="fa-solid fa-ticket"
-                        style={{ fontSize: "30px", color: "white" }}
-                    />
+                   <DynaicIcon 
+                       name="Ticket"
+                       fontSize="30"
+                       color="#ffffff"
+                       stroke="10"
+                   />
                 </div>
                 <div
                     className={`${styles.sideBarFooter} ${
@@ -29,7 +32,7 @@ export function SideBar() {
                     }`}
                     onClick={toggleSideBar}
                 >
-                    <i className="fa-solid fa-angles-right"></i>
+                    <DynaicIcon name={"AnglesRight"} fontSize={25} />
                 </div>
                 <div
                     className={`${styles.list} ${isSideBarOpen ? styles.listOpen : ""}`}

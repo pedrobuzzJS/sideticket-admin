@@ -1,9 +1,11 @@
+import {DynaicIcon} from "../../icons.tsx";
+
 export default function TabBar() {
     return (
         <div
             style={{
                 height: "50px",
-                backgroundColor: "#2b303b",
+                backgroundColor: "#1a1a1a",
                 width: "100%",
                 display: "flex",
                 justifyContent: "center",
@@ -25,18 +27,11 @@ export default function TabBar() {
                         display: "flex",
                         justifyContent: "start",
                         alignItems: "center",
-                        backgroundColor: "#464f61",
+                        backgroundColor: "#252525",
                         position: "relative",
                     }}
                 >
-                    <i
-                        className="fa-regular fa-user"
-                        style={{
-                            color: "white",
-                            fontSize: "15px",
-                            marginLeft: "5px",
-                        }}
-                    />
+                    <DynaicIcon name={"User"} fontSize={45}/>
                     <span
                         style={{
                             marginLeft: "5px",

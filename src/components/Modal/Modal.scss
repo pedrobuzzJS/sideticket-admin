@@ -12,7 +12,7 @@
 
     .modal {
         background-color: #fff;
-        border: 2px solid #2a3d41;
+        border: 2px solid #1a1a1a;
         border-radius: 0.5rem;
         position: relative;
         box-shadow: 3px 3px 0 #00000033;
@@ -43,7 +43,7 @@
                 display: grid;
                 grid-template-columns: 1fr auto;
                 align-items: center;
-                background: #2a3d41;
+                background: #1a1a1a;
 
                 .modalHeaderDrag {
                     display: flex;
@@ -69,8 +69,8 @@
                 display: flex;
                 justify-content: flex-end;
                 align-items: center;
-                border-top: 2px solid #2a3d41;
-                background-color: #265e6a;
+                border-top: 2px solid #1a1a1a;
+                background-color: #1a1a1a;
                 position: relative;
                 z-index: 10;
                 gap: 10px;

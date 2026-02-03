@@ -1,0 +1,8 @@
+{
+  "$schema": "https://denji-docs.vercel.app/configuration_schema.json",
+  "output": "./src/icons.tsx",
+  "framework": "react",
+  "typescript": true,
+  "a11y": "img",
+  "trackSource": true
+}

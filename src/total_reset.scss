@@ -110,7 +110,6 @@ section {
 body {
     line-height: 1;
     font-family: "Inter", "Roboto", sans-serif;
-    //color: white;
     font-weight: 400;
     font-size: calc(1rem * 12 / 12);
 }
@@ -166,5 +165,5 @@ main {
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: #2b303b;
+    background-color: #1a1a1a;
 }

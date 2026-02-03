@@ -2,8 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./route-tree.gen.ts";
-import "./total_reset.scss";
-import "@fortawesome/fontawesome-free/css/all.min.css";
+import "./total_reset.scss"
 
 export const router = createRouter({
     routeTree,
